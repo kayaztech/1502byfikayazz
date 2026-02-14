@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Kuis Tiket Hadiah</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #FFB6C1, #87CEEB); /* Gradien pink dan biru pastel */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #FF69B4; /* Pink lebih gelap */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .question {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            border: 2px solid #87CEEB;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button {
+            background: #FF69B4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #FF1493;
+        }
+        .ticket {
+            display: none;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .ticket img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Game Kuis Tiket Hadiah</h1>
+    <p>Jawab 3 pertanyaan dengan benar untuk mendapatkan 3 hadiah.</p>
+
+    <div class="question" id="q1">
+        <h2>Pertanyaan 1: Kapan tanggal ulang tahun aku?</h2>
+        <input type="text" id="answer1" placeholder="Masukkan jawaban">
+        <button onclick="checkAnswer(1)">Jawab</button>
+        <p class="error" id="error1"></p>
+    </div>
+
+    <div class="ticket" id="ticket1">
+        <h3>Selamat! Jawaban benar.</h3>
+        <p>Hadiah: Pancake</p>
+        <https://image2url.com/r2/default/images/1771058702542-78acc22c-c8c0-4151-b59b-8bd6a8c83920.png>
+    </div>
+
+    <div class="question" id="q2" style="display: none;">
+        <h2>Pertanyaan 2: Pilih satu angka</h2>
+        <input type="number" id="answer2" placeholder="Masukkan angka">
+        <button onclick="checkAnswer(2)">Jawab</button>
+        <p class="error" id="error2"></p>
+    </div>
+
+    <div class="ticket" id="ticket2">
+        <h3>Selamat! Jawaban benar.</h3>
+        <p>Hadiah: DIY Kit</p>
+        <https://image2url.com/r2/default/images/1771058728927-4cb32468-7668-470c-9e78-ebc254618689.png>
+    </div>
+
+    <div class="question" id="q3" style="display: none;">
+        <h2>Pertanyaan 3: Sebutkan warna favorit aku</h2>
+        <input type="text" id="answer3" placeholder="Masukkan warna">
+        <button onclick="checkAnswer(3)">Jawab</button>
+        <p class="error" id="error3"></p>
+    </div>
+
+    <div class="ticket" id="ticket3">
+        <h3>Selamat! Jawaban benar.</h3>
+        <p>Hadiah: Website Lucu</p>
+        <https://ibb.co.com/YBbrtwZM>
+    </div>
+
+    <script>
+        function checkAnswer(questionNumber) {
+            const answers = {
+                1: '19/08',
+                2: '7',
+                3: 'pink'
+            };
+            const input = document.getElementById('answer' + questionNumber).value.trim().toLowerCase();
+            const error = document.getElementById('error' + questionNumber);
+            const ticket = document.getElementById('ticket' + questionNumber);
+            const nextQuestion = document.getElementById('q' + (questionNumber + 1));
+
+            if (input === answers[questionNumber].toLowerCase()) {
+                error.textContent = '';
+                ticket.style.display = 'block';
+                if (nextQuestion) {
+                    nextQuestion.style.display = 'block';
+                }
+            } else {
+                error.textContent = 'Jawaban salah, coba lagi!';
+            }
+        }
+    </script>
+</body>
+</html>
